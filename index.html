@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- FONT PREMIUM -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="assets/music.mp3" type="audio/mp3">
+</audio>
+
+<!-- COVER -->
+<section id="cover">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+  <div class="frame"></div>
+
+  <div class="content fade">
+    <p class="top">~ UNDANGAN PERNIKAHAN ~</p>
+    <p class="bismillah">Bismillahirrahmanirrahim</p>
+
+    <p class="desc">Dengan penuh cinta kami mengundang</p>
+    <h2 id="guestName">Tamu Undangan</h2>
+
+    <p class="desc">untuk menghadiri pernikahan kami</p>
+
+    <h1 class="name">Subyan</h1>
+    <div class="and">&</div>
+    <h1 class="name">Desmawati</h1>
+
+    <button id="openBtn">Buka Undangan</button>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div id="mainContent">
+
+<!-- HERO -->
+<section class="hero reveal">
+  <h1>Subyan & Desmawati</h1>
+  <p>02 - 03 Mei 2026</p>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="reveal">
+  <h2>Menuju Hari Bahagia</h2>
+  <div id="timer"></div>
+</section>
+
+<!-- DETAIL -->
+<section class="reveal">
+  <h2>Detail Acara</h2>
+
+  <div class="card">
+    <h3>Akad</h3>
+    <p>Sabtu, 02 Mei 2026</p>
+    <p>19:30 WIB</p>
+  </div>
+
+  <div class="card">
+    <h3>Resepsi</h3>
+    <p>Minggu, 03 Mei 2026</p>
+    <p>09:00 WIB</p>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="reveal">
+  <h2>Lokasi</h2>
+  <iframe src="https://maps.google.com/maps?q=Desa%20Sungai%20Keruh%20Tebo&output=embed"></iframe>
+</section>
+
+<!-- GALERI -->
+<section class="reveal">
+  <h2>Galeri</h2>
+  <div class="grid">
+    <img src="assets/gallery1.png">
+    <img src="assets/gallery2.png">
+    <img src="assets/gallery3.png">
+  </div>
+</section>
+
+<!-- REKENING -->
+<section class="reveal">
+  <h2>Wedding Gift</h2>
+  <div class="card">
+    <p>Bank BCA</p>
+    <h3 id="rek">1234567890</h3>
+    <button onclick="copyRek()">Salin</button>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="reveal">
+  <h2>RSVP</h2>
+  <button id="waBtn">Kirim WhatsApp</button>
+</section>
+
+<!-- UCAPAN -->
+<section class="reveal">
+  <h2>Ucapan & Doa</h2>
+  <input id="nama" placeholder="Nama">
+  <textarea id="pesan" placeholder="Ucapan"></textarea>
+  <button onclick="kirimUcapan()">Kirim</button>
+  <div id="listUcapan"></div>
+</section>
+
+</div>
+
+<button id="musicBtn">🔊</button>
+
+<script src="script.js"></script>
+</body>
+</html>
