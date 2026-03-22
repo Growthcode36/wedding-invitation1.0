@@ -6,7 +6,7 @@
 'use strict';
 
 /* ── CONSTANTS ── */
-const WA_NUMBER   = '6281234567890'; // Ganti dengan nomor WhatsApp yang aktif
+const WA_NUMBER   = '6282279915729'; // Ganti dengan nomor WhatsApp yang aktif
 const WEDDING_DATE = new Date('2026-05-02T19:30:00+07:00'); // Akad Nikah
 const WISHES_KEY   = 'wedding_wishes_subyan_desma';
 
@@ -188,8 +188,8 @@ function startAutoScroll() {
       autoScrollActive = false;
       return;
     }
-    window.scrollBy({ top: 2, behavior: 'instant' });
-  }, 30);
+    window.scrollBy({ top: 1, behavior: 'instant' });
+  }, 200);
 
   // Pasang stop listeners SETELAH 800ms
   // supaya sentuhan tombol "Buka Undangan" tidak ikut stop scroll
