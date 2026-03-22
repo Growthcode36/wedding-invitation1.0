@@ -1,29 +1,28 @@
 body {
   margin:0;
   font-family:'Poppins';
-  background:#0a0f1f;
+  background:#050b1a;
   color:white;
 }
 
 /* COVER */
 #cover {
   height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
   position:relative;
+  overflow:hidden;
 }
 
-#cover::before {
-  content:"";
+/* BACKGROUND */
+.bg {
   position:absolute;
   width:100%;
   height:100%;
   background:url('assets/gallery2.png') center/cover;
-  filter:blur(8px) brightness(0.5);
+  filter:blur(8px) brightness(0.4);
+  transform:scale(1.1);
 }
 
+/* OVERLAY */
 .overlay {
   position:absolute;
   width:100%;
@@ -31,41 +30,60 @@ body {
   background:radial-gradient(circle, rgba(255,215,0,0.2), black);
 }
 
+/* CONTENT */
 .content {
   position:relative;
   z-index:2;
+  text-align:center;
+  top:50%;
+  transform:translateY(-50%);
 }
 
+.top {
+  letter-spacing:4px;
+  color:gold;
+}
+
+.bismillah {
+  font-style:italic;
+}
+
+.desc {
+  opacity:0.8;
+}
+
+/* NAMA */
 .name {
   font-family:'Great Vibes';
-  font-size:40px;
+  font-size:48px;
+  text-shadow:0 0 20px gold;
 }
 
-button {
-  padding:12px 20px;
-  background:gold;
-  border:none;
+.and {
+  color:gold;
+  font-size:24px;
+}
+
+/* BUTTON */
+#openBtn {
   margin-top:20px;
+  padding:12px 25px;
+  background:linear-gradient(45deg,gold,orange);
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
 }
 
 /* MAIN */
-#main {
+#mainContent {
   display:none;
-  padding:20px;
 }
 
 /* HERO */
 .hero {
   height:100vh;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .name {
-    font-size:32px;
-  }
+  flex-direction:column;
 }
