@@ -149,32 +149,27 @@ bgMusic.addEventListener('pause', () => { musicPlaying = false; updateMusicIcon(
 
 /* ============================================================
    6. AUTO SCROLL
-   - Scroll otomatis menelusuri seluruh halaman dari atas
-   - Berhenti saat user menyentuh layar / scroll manual
+   - Scroll otomatis menelusuri seluruh halaman
+   - Berhenti hanya jika user scroll/swipe SENDIRI setelah scroll dimulai
 ============================================================ */
 let autoScrollActive = false;
 let autoScrollRAF    = null;
+let stopListenersAdded = false;
 
 function startAutoScroll() {
-  // Pastikan halaman di posisi paling atas dulu
   window.scrollTo(0, 0);
-
   autoScrollActive = true;
 
-  // Kecepatan piksel per detik (makin besar makin cepat)
-  const PX_PER_SEC = 60;
+  const PX_PER_SEC = 55;
   let lastTime = null;
 
   function tick(ts) {
     if (!autoScrollActive) return;
-
     if (lastTime === null) { lastTime = ts; }
     const delta = ts - lastTime;
     lastTime = ts;
 
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-
-    // Sudah di bawah? berhenti
     if (window.scrollY >= maxScroll) {
       autoScrollActive = false;
       return;
@@ -185,9 +180,12 @@ function startAutoScroll() {
   }
 
   autoScrollRAF = requestAnimationFrame(tick);
+
+  // Pasang listener SETELAH scroll benar-benar berjalan
+  // Delay 600ms agar sentuhan pada tombol "Buka Undangan" tidak ikut mentrigger stop
+  setTimeout(addStopListeners, 600);
 }
 
-// Hentikan auto scroll saat user scroll / touch manual
 function stopAutoScroll() {
   if (autoScrollActive) {
     autoScrollActive = false;
@@ -195,12 +193,18 @@ function stopAutoScroll() {
   }
 }
 
-window.addEventListener('wheel',      stopAutoScroll, { passive: true });
-window.addEventListener('touchstart', stopAutoScroll, { passive: true });
-window.addEventListener('keydown',    function(e) {
-  const scrollKeys = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
-  if (scrollKeys.includes(e.key)) stopAutoScroll();
-});
+function addStopListeners() {
+  if (stopListenersAdded) return;
+  stopListenersAdded = true;
+
+  // Deteksi scroll manual user (wheel = desktop, touchmove = HP)
+  window.addEventListener('wheel',     stopAutoScroll, { passive: true });
+  window.addEventListener('touchmove', stopAutoScroll, { passive: true });
+  window.addEventListener('keydown', function(e) {
+    const keys = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
+    if (keys.includes(e.key)) stopAutoScroll();
+  });
+}
 
 
 /* ============================================================
