@@ -1,7 +1,22 @@
-// NAMA TAMU
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("to");
-if (guest) document.getElementById("guestName").innerText = guest;
+// AMBIL NAMA TAMU DARI URL
+function getGuestName() {
+  const params = new URLSearchParams(window.location.search);
+  let guest = params.get("to");
+
+  if (!guest || guest.trim() === "") {
+    return "Tamu Undangan";
+  }
+
+  return decodeURIComponent(guest);
+}
+
+// CAPITALIZE
+function capitalizeName(name) {
+  return name.replace(/\b\w/g, l => l.toUpperCase());
+}
+
+// SET NAMA TAMU
+document.getElementById("guestName").innerText = capitalizeName(getGuestName());
 
 // ELEMENT
 const openBtn = document.getElementById("openBtn");
@@ -46,9 +61,9 @@ setInterval(() => {
     `${d} Hari ${h} Jam ${m} Menit ${s} Detik`;
 }, 1000);
 
-// WA
+// WA RSVP
 document.getElementById("waBtn").onclick = () => {
-  const nama = guest || "Tamu";
+  const nama = getGuestName();
   const text = `Halo, saya ${nama} akan hadir di pernikahan Subyan & Desmawati`;
   window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(text)}`);
 };
