@@ -462,6 +462,31 @@ document.addEventListener('visibilitychange', function() {
 
 
 /* ============================================================
+   15. LIGHTBOX GALLERY
+============================================================ */
+window.openLightbox = function(src) {
+  const lb  = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  if (!lb || !img) return;
+  img.src = src;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeLightbox = function() {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+};
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+
+/* ============================================================
    LOG
 ============================================================ */
 console.log('%c♥ Subyan & Desmawati — 02 Mei 2026 ♥', 'color:#c9a96e;font-size:16px;font-weight:bold;');
