@@ -1,14 +1,25 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #000;
   color: white;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+}
+
+/* COVER */
+#cover {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  text-align: center;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .hero::before {
@@ -17,19 +28,36 @@ body {
   width: 100%;
   height: 100%;
   background: url('assets/gallery2.png') center/cover;
-  filter: blur(8px) brightness(0.5);
+  filter: blur(10px) brightness(0.4);
+  transform: scale(1.1);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,215,0,0.2), rgba(0,0,0,0.9));
+  animation: glow 6s infinite;
+}
+
+@keyframes glow {
+  0% {opacity:0.6;}
+  50% {opacity:1;}
+  100% {opacity:0.6;}
 }
 
 .hero-text {
   position: relative;
-  text-align: center;
   top: 50%;
   transform: translateY(-50%);
+  text-align: center;
 }
 
 h1, h2 {
-  color: gold;
   font-family: 'Playfair Display';
+  color: gold;
+  text-shadow: 0 0 10px gold;
 }
 
 /* SECTION */
@@ -43,8 +71,8 @@ section {
   background: rgba(255,255,255,0.05);
   padding: 20px;
   margin: 20px auto;
-  max-width: 400px;
   border-radius: 12px;
+  max-width: 400px;
 }
 
 /* GRID */
@@ -64,7 +92,6 @@ button, .btn {
   padding: 10px 20px;
   background: gold;
   border: none;
-  margin-top: 10px;
   cursor: pointer;
 }
 
@@ -79,7 +106,7 @@ iframe {
 input, textarea {
   width: 90%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px;
 }
 
 /* ANIMASI */
@@ -92,4 +119,11 @@ input, textarea {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* MUSIC BUTTON */
+#musicBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
