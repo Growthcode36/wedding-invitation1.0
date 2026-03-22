@@ -80,6 +80,9 @@
 
     <!-- ── HERO SECTION ── -->
     <section class="hero section" id="sHero">
+      <!-- Hero background photo -->
+      <div class="hero-photo-bg" style="background-image:url('assets/hero.png')"></div>
+      <div class="hero-photo-overlay"></div>
       <div class="hero-bg-art">
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
@@ -280,50 +283,35 @@
       <div class="section-inner reveal">
         <div class="section-tag">Momen Kami</div>
         <h2 class="section-title">Galeri Foto</h2>
-        <p class="gallery-note">Foto prewedding akan tersedia segera</p>
-
-        <!-- Placeholder gallery cards (replace src with real photos) -->
+        <!-- Gallery grid — 4 real photos -->
         <div class="gallery-grid">
-          <div class="gallery-item gi-large reveal-up" style="--delay:.1s">
-            <div class="gallery-placeholder gp-1">
-              <div class="gallery-placeholder-text">
-                <div class="gp-icon">✦</div>
-                <span>Foto 1</span>
-              </div>
-            </div>
+
+          <div class="gallery-item gi-large reveal-up" style="--delay:.1s" onclick="openLightbox('assets/gallery1.png')">
+            <img src="assets/gallery1.png" alt="Foto Prewedding 1" loading="lazy" />
+            <div class="gallery-hover-overlay"><span>✦</span></div>
           </div>
-          <div class="gallery-item gi-tall reveal-up" style="--delay:.2s">
-            <div class="gallery-placeholder gp-2">
-              <div class="gallery-placeholder-text">
-                <div class="gp-icon">✦</div>
-                <span>Foto 2</span>
-              </div>
-            </div>
+
+          <div class="gallery-item gi-tall reveal-up" style="--delay:.2s" onclick="openLightbox('assets/gallery2.png')">
+            <img src="assets/gallery2.png" alt="Foto Prewedding 2" loading="lazy" />
+            <div class="gallery-hover-overlay"><span>✦</span></div>
           </div>
-          <div class="gallery-item gi-small reveal-up" style="--delay:.3s">
-            <div class="gallery-placeholder gp-3">
-              <div class="gallery-placeholder-text">
-                <div class="gp-icon">✦</div>
-                <span>Foto 3</span>
-              </div>
-            </div>
+
+          <div class="gallery-item gi-small reveal-up" style="--delay:.3s" onclick="openLightbox('assets/gallery3.png')">
+            <img src="assets/gallery3.png" alt="Foto Prewedding 3" loading="lazy" />
+            <div class="gallery-hover-overlay"><span>✦</span></div>
           </div>
-          <div class="gallery-item gi-small reveal-up" style="--delay:.4s">
-            <div class="gallery-placeholder gp-4">
-              <div class="gallery-placeholder-text">
-                <div class="gp-icon">✦</div>
-                <span>Foto 4</span>
-              </div>
-            </div>
+
+          <div class="gallery-item gi-wide reveal-up" style="--delay:.4s" onclick="openLightbox('assets/hero.png')">
+            <img src="assets/hero.png" alt="Foto Prewedding 4" loading="lazy" />
+            <div class="gallery-hover-overlay"><span>✦</span></div>
           </div>
-          <div class="gallery-item gi-wide reveal-up" style="--delay:.5s">
-            <div class="gallery-placeholder gp-5">
-              <div class="gallery-placeholder-text">
-                <div class="gp-icon">✦</div>
-                <span>Foto 5</span>
-              </div>
-            </div>
-          </div>
+
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+          <div class="lightbox-close">✕</div>
+          <img class="lightbox-img" id="lightboxImg" src="" alt="Foto" />
         </div>
       </div>
     </section>
@@ -448,10 +436,9 @@
 
   </div><!-- /#mainContent -->
 
-  <!-- AUDIO (free royalty-free wedding music) -->
+  <!-- AUDIO -->
   <audio id="bgMusic" loop preload="none">
-    <!-- Ganti src dengan file musik lokal atau CDN yang diizinkan -->
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+    <source src="assets/music.mp3" type="audio/mpeg" />
   </audio>
 
   <script src="script.js"></script>
