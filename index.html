@@ -11,7 +11,7 @@
 
 <body>
 
-<!-- MUSIC -->
+<!-- AUDIO -->
 <audio id="music" loop>
   <source src="assets/music.mp3" type="audio/mp3">
 </audio>
@@ -21,9 +21,7 @@
   <div class="cover-box">
     <p>Kepada Yth:</p>
     <h2 id="guestName">Tamu Undangan</h2>
-
     <h1>Subyan & Desmawati</h1>
-
     <button id="openBtn">Buka Undangan</button>
   </div>
 </section>
@@ -38,14 +36,14 @@
   </div>
 </section>
 
-<!-- COUPLE -->
+<!-- MEMPELAI -->
 <section class="reveal">
   <h2>Mempelai</h2>
 
   <p><b>Subyan</b><br>
   Putra Pertama Dari Bapak Husairi & Ibu Suhaibatul Musajjadah</p>
 
-  <p class="divider">Dengan</p>
+  <p style="margin:20px 0;">Dengan</p>
 
   <p><b>Desmawati, S.Hut</b><br>
   Putri Bungsu Dari Bapak Bakar & Ibu Simar (Alm)</p>
@@ -78,17 +76,14 @@
 <section class="reveal">
   <h2>Lokasi</h2>
 
-  <iframe 
-    src="https://maps.google.com/maps?q=Desa%20Sungai%20Keruh%20Tebo&t=&z=13&ie=UTF8&iwloc=&output=embed"
-    loading="lazy">
-  </iframe>
+  <iframe src="https://maps.google.com/maps?q=Desa%20Sungai%20Keruh%20Tebo&output=embed"></iframe>
 
   <a href="https://maps.google.com?q=Desa Sungai Keruh Tebo" target="_blank" class="btn">
     Buka Google Maps
   </a>
 </section>
 
-<!-- GALLERY -->
+<!-- GALERI -->
 <section class="reveal">
   <h2>Galeri</h2>
   <div class="grid">
@@ -115,12 +110,12 @@
   <a id="waBtn" class="btn">Kirim WhatsApp</a>
 </section>
 
-<!-- KOMENTAR -->
+<!-- UCAPAN -->
 <section class="reveal">
   <h2>Ucapan & Doa</h2>
 
-  <input type="text" id="nama" placeholder="Nama">
-  <textarea id="pesan" placeholder="Tulis ucapan..."></textarea>
+  <input id="nama" placeholder="Nama">
+  <textarea id="pesan" placeholder="Tulis ucapan"></textarea>
   <button onclick="kirimUcapan()">Kirim</button>
 
   <div id="listUcapan"></div>
