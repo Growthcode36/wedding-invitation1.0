@@ -46,7 +46,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── SCROLLBAR ── */
+button, a {
+  touch-action: manipulation;
+}
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--navy); }
 ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
