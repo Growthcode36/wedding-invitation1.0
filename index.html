@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Invitation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
 
-<link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 
-<!-- FONT PREMIUM -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- MUSIC -->
+<!-- AUDIO -->
 <audio id="music" loop>
-  <source src="assets/music.mp3" type="audio/mp3">
+  <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- COVER -->
+<!-- ================= COVER ================= -->
 <section id="cover">
   <div class="bg"></div>
   <div class="overlay"></div>
-  <div class="frame"></div>
 
-  <div class="content fade">
-    <p class="top">~ UNDANGAN PERNIKAHAN ~</p>
+  <div class="content">
+    <p class="top">UNDANGAN PERNIKAHAN</p>
     <p class="bismillah">Bismillahirrahmanirrahim</p>
 
-    <p class="desc">Dengan penuh cinta kami mengundang</p>
+    <p>Kepada Yth:</p>
     <h2 id="guestName">Tamu Undangan</h2>
-
-    <p class="desc">untuk menghadiri pernikahan kami</p>
 
     <h1 class="name">Subyan</h1>
     <div class="and">&</div>
@@ -41,83 +39,47 @@
   </div>
 </section>
 
-<!-- MAIN -->
-<div id="mainContent">
+<!-- ================= MAIN ================= -->
+<main id="mainContent">
 
-<!-- HERO -->
-<section class="hero reveal">
-  <h1>Subyan & Desmawati</h1>
-  <p>02 - 03 Mei 2026</p>
-</section>
+  <section class="hero">
+    <h1>Subyan & Desmawati</h1>
+    <p>02 - 03 Mei 2026</p>
+  </section>
 
-<!-- COUNTDOWN -->
-<section class="reveal">
-  <h2>Menuju Hari Bahagia</h2>
-  <div id="timer"></div>
-</section>
+  <section>
+    <h2>Countdown</h2>
+    <div id="timer"></div>
+  </section>
 
-<!-- DETAIL -->
-<section class="reveal">
-  <h2>Detail Acara</h2>
+  <section>
+    <h2>Detail Acara</h2>
+    <p>Akad: Sabtu, 02 Mei 2026 - 19:30 WIB</p>
+    <p>Resepsi: Minggu, 03 Mei 2026 - 09:00 WIB</p>
+  </section>
 
-  <div class="card">
-    <h3>Akad</h3>
-    <p>Sabtu, 02 Mei 2026</p>
-    <p>19:30 WIB</p>
-  </div>
+  <section>
+    <h2>Lokasi</h2>
+    <iframe 
+      src="https://maps.google.com/maps?q=Desa%20Sungai%20Keruh%20Tebo&output=embed"
+      width="100%" height="250" style="border:0;">
+    </iframe>
+  </section>
 
-  <div class="card">
-    <h3>Resepsi</h3>
-    <p>Minggu, 03 Mei 2026</p>
-    <p>09:00 WIB</p>
-  </div>
-</section>
+  <section>
+    <h2>Galeri</h2>
+    <img src="assets/gallery1.png" width="100%">
+  </section>
 
-<!-- MAP -->
-<section class="reveal">
-  <h2>Lokasi</h2>
-  <iframe src="https://maps.google.com/maps?q=Desa%20Sungai%20Keruh%20Tebo&output=embed"></iframe>
-</section>
+  <section>
+    <h2>RSVP</h2>
+    <button id="waBtn">Kirim WhatsApp</button>
+  </section>
 
-<!-- GALERI -->
-<section class="reveal">
-  <h2>Galeri</h2>
-  <div class="grid">
-    <img src="assets/gallery1.png">
-    <img src="assets/gallery2.png">
-    <img src="assets/gallery3.png">
-  </div>
-</section>
+</main>
 
-<!-- REKENING -->
-<section class="reveal">
-  <h2>Wedding Gift</h2>
-  <div class="card">
-    <p>Bank BCA</p>
-    <h3 id="rek">1234567890</h3>
-    <button onclick="copyRek()">Salin</button>
-  </div>
-</section>
-
-<!-- RSVP -->
-<section class="reveal">
-  <h2>RSVP</h2>
-  <button id="waBtn">Kirim WhatsApp</button>
-</section>
-
-<!-- UCAPAN -->
-<section class="reveal">
-  <h2>Ucapan & Doa</h2>
-  <input id="nama" placeholder="Nama">
-  <textarea id="pesan" placeholder="Ucapan"></textarea>
-  <button onclick="kirimUcapan()">Kirim</button>
-  <div id="listUcapan"></div>
-</section>
-
-</div>
-
-<button id="musicBtn">🔊</button>
-
+<!-- JS -->
 <script src="script.js"></script>
+
 </body>
 </html>
