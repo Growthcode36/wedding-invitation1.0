@@ -1,0 +1,71 @@
+body {
+  margin:0;
+  font-family:'Poppins';
+  background:#0a0f1f;
+  color:white;
+}
+
+/* COVER */
+#cover {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
+
+#cover::before {
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:url('assets/gallery2.png') center/cover;
+  filter:blur(8px) brightness(0.5);
+}
+
+.overlay {
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle, rgba(255,215,0,0.2), black);
+}
+
+.content {
+  position:relative;
+  z-index:2;
+}
+
+.name {
+  font-family:'Great Vibes';
+  font-size:40px;
+}
+
+button {
+  padding:12px 20px;
+  background:gold;
+  border:none;
+  margin-top:20px;
+}
+
+/* MAIN */
+#main {
+  display:none;
+  padding:20px;
+}
+
+/* HERO */
+.hero {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .name {
+    font-size:32px;
+  }
+}
