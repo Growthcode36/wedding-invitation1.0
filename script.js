@@ -3,7 +3,7 @@ const params = new URLSearchParams(window.location.search);
 const guest = params.get("to");
 if (guest) document.getElementById("guestName").innerText = guest;
 
-// OPEN
+// ELEMENT
 const openBtn = document.getElementById("openBtn");
 const cover = document.getElementById("cover");
 const main = document.getElementById("mainContent");
@@ -11,11 +11,25 @@ const music = document.getElementById("music");
 
 main.style.display = "none";
 
+// OPEN
 openBtn.onclick = () => {
   cover.style.display = "none";
   main.style.display = "block";
   music.play();
+  startAutoScroll();
 };
+
+// AUTO SCROLL HALUS
+function startAutoScroll() {
+  function scroll() {
+    window.scrollBy(0, 0.5);
+
+    if ((window.innerHeight + window.scrollY) < document.body.offsetHeight) {
+      requestAnimationFrame(scroll);
+    }
+  }
+  scroll();
+}
 
 // COUNTDOWN
 const target = new Date("May 2, 2026 19:30:00").getTime();
@@ -42,12 +56,11 @@ document.getElementById("waBtn").onclick = () => {
 
 // COPY REKENING
 function copyRek() {
-  const rek = document.getElementById("rek").innerText;
-  navigator.clipboard.writeText(rek);
-  alert("Nomor rekening disalin!");
+  navigator.clipboard.writeText(document.getElementById("rek").innerText);
+  alert("Rekening disalin");
 }
 
-// KOMENTAR (LOCAL STORAGE)
+// KOMENTAR
 function kirimUcapan() {
   const nama = document.getElementById("nama").value;
   const pesan = document.getElementById("pesan").value;
@@ -59,11 +72,9 @@ function kirimUcapan() {
   tampilUcapan();
 }
 
-// TAMPILKAN
 function tampilUcapan() {
   let data = JSON.parse(localStorage.getItem("ucapan")) || [];
-  const container = document.getElementById("listUcapan");
-
+  let container = document.getElementById("listUcapan");
   container.innerHTML = "";
 
   data.forEach(d => {
