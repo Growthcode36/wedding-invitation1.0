@@ -188,7 +188,7 @@ function startAutoScroll() {
       autoScrollActive = false;
       return;
     }
-    window.scrollBy({ top: 1, behavior: 'instant' });
+    window.scrollBy({ top: 3, behavior: 'instant' });
   }, 200);
 
   // Pasang stop listeners SETELAH 800ms
