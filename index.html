@@ -6,7 +6,7 @@
 <title>Wedding Invitation</title>
 
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,111 +15,42 @@
   <source src="assets/music.mp3" type="audio/mp3">
 </audio>
 
-<!-- COVER -->
+<!-- COVER PREMIUM -->
 <section id="cover">
-  <div class="cover-overlay"></div>
 
-  <div class="cover-content">
-    <p>Kepada Yth:</p>
+  <div class="light"></div>
+
+  <div class="frame"></div>
+
+  <div class="content">
+
+    <p class="top-text">~ UNDANGAN PERNIKAHAN ~</p>
+
+    <p class="bismillah">Bismillahirrahmanirrahim</p>
+
+    <p class="desc">
+      Dengan penuh cinta dan kasih sayang, kami mengundang Bapak/Ibu/Saudara/i
+    </p>
+
     <h2 id="guestName">Tamu Undangan</h2>
-    <p>Di Tempat</p>
 
-    <h1 class="couple-name">Subyan & Desmawati</h1>
+    <p class="desc">untuk menghadiri acara pernikahan kami</p>
+
+    <h1 class="name1">Subyan</h1>
+    <div class="and">&</div>
+    <h1 class="name2">Desmawati</h1>
+
+    <div class="date">
+      <span>Sabtu</span>
+      <span>02</span>
+      <span>Mei</span>
+      <span>2026</span>
+    </div>
 
     <button id="openBtn">Buka Undangan</button>
+
   </div>
 </section>
-
-<!-- MAIN -->
-<div id="mainContent">
-
-<section class="hero reveal">
-  <div class="hero-text">
-    <h1>Subyan & Desmawati</h1>
-    <p>02 - 03 Mei 2026</p>
-  </div>
-</section>
-
-<section class="reveal">
-  <h2>Mempelai</h2>
-
-  <p><b>Subyan</b><br>
-  Putra Pertama Dari Bapak Husairi & Ibu Suhaibatul Musajjadah</p>
-
-  <p style="margin:20px 0;">Dengan</p>
-
-  <p><b>Desmawati, S.Hut</b><br>
-  Putri Bungsu Dari Bapak Bakar & Ibu Simar (Alm)</p>
-</section>
-
-<section class="reveal">
-  <h2>Menuju Hari Bahagia</h2>
-  <div id="timer"></div>
-</section>
-
-<section class="reveal">
-  <h2>Detail Acara</h2>
-
-  <div class="card">
-    <h3>Akad Nikah</h3>
-    <p>Sabtu, 02 Mei 2026</p>
-    <p>19:30 WIB</p>
-  </div>
-
-  <div class="card">
-    <h3>Resepsi</h3>
-    <p>Minggu, 03 Mei 2026</p>
-    <p>09:00 WIB</p>
-  </div>
-</section>
-
-<section class="reveal">
-  <h2>Lokasi</h2>
-
-  <iframe src="https://maps.google.com/maps?q=Desa%20Sungai%20Keruh%20Tebo&output=embed"></iframe>
-
-  <a href="https://maps.google.com?q=Desa Sungai Keruh Tebo" target="_blank" class="btn">
-    Buka Google Maps
-  </a>
-</section>
-
-<section class="reveal">
-  <h2>Galeri</h2>
-  <div class="grid">
-    <img src="assets/gallery1.png">
-    <img src="assets/gallery2.png">
-    <img src="assets/gallery3.png">
-  </div>
-</section>
-
-<section class="reveal">
-  <h2>Wedding Gift</h2>
-
-  <div class="card">
-    <p>Bank BCA</p>
-    <h3 id="rek">1234567890</h3>
-    <button onclick="copyRek()">Salin Rekening</button>
-  </div>
-</section>
-
-<section class="reveal">
-  <h2>Konfirmasi Kehadiran</h2>
-  <a id="waBtn" class="btn">Kirim WhatsApp</a>
-</section>
-
-<section class="reveal">
-  <h2>Ucapan & Doa</h2>
-
-  <input id="nama" placeholder="Nama">
-  <textarea id="pesan" placeholder="Tulis ucapan"></textarea>
-  <button onclick="kirimUcapan()">Kirim</button>
-
-  <div id="listUcapan"></div>
-</section>
-
-</div>
-
-<button id="musicBtn">🔊</button>
 
 <script src="script.js"></script>
 </body>
