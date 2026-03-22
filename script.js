@@ -23,7 +23,6 @@ openBtn.onclick = () => {
 function startAutoScroll() {
   function scroll() {
     window.scrollBy(0, 0.5);
-
     if ((window.innerHeight + window.scrollY) < document.body.offsetHeight) {
       requestAnimationFrame(scroll);
     }
@@ -75,8 +74,8 @@ function kirimUcapan() {
 function tampilUcapan() {
   let data = JSON.parse(localStorage.getItem("ucapan")) || [];
   let container = document.getElementById("listUcapan");
-  container.innerHTML = "";
 
+  container.innerHTML = "";
   data.forEach(d => {
     container.innerHTML += `<p><b>${d.nama}</b><br>${d.pesan}</p>`;
   });
