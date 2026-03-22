@@ -1,16 +1,39 @@
-// AMBIL NAMA TAMU
-function getGuestName() {
+// NAMA TAMU
+function getGuest() {
   const params = new URLSearchParams(window.location.search);
-  let guest = params.get("to");
-
-  if (!guest) return "Tamu Undangan";
-
-  return decodeURIComponent(guest);
+  let g = params.get("to");
+  return g ? decodeURIComponent(g) : "Tamu Undangan";
 }
 
-document.getElementById("guestName").innerText = getGuestName();
+document.getElementById("guestName").innerText = getGuest();
 
-// OPEN BUTTON
-document.getElementById("openBtn").onclick = () => {
-  alert("Next: masuk ke halaman utama (bisa lanjut kamu sambungkan)");
+// ELEMENT
+const openBtn = document.getElementById("openBtn");
+const cover = document.getElementById("cover");
+const main = document.getElementById("main");
+const music = document.getElementById("music");
+
+// OPEN FIX
+openBtn.onclick = () => {
+  cover.style.display = "none";
+  main.style.display = "block";
+  music.play();
+  autoScroll();
+};
+
+// AUTO SCROLL
+function autoScroll(){
+  function scroll(){
+    window.scrollBy(0,0.5);
+    if(window.innerHeight + window.scrollY < document.body.offsetHeight){
+      requestAnimationFrame(scroll);
+    }
+  }
+  scroll();
+}
+
+// WA
+document.getElementById("waBtn").onclick = () => {
+  const nama = getGuest();
+  window.open(`https://wa.me/6281234567890?text=Halo saya ${nama} akan hadir`);
 };
