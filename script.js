@@ -82,23 +82,36 @@ const bgMusic      = document.getElementById('bgMusic');
    4. OPEN COVER → SHOW MAIN CONTENT
 ============================================================ */
 btnOpen.addEventListener('click', function openCover() {
-  // 1. Hide cover
-  cover.classList.add('hiding');
-  setTimeout(() => { cover.style.display = 'none'; }, 950);
+  // Prevent double-click
+  btnOpen.disabled = true;
 
-  // 2. Show main content
+  // 1. Fade cover out
+  cover.classList.add('hiding');
+
+  // 2. Show main content SEKARANG (sebelum cover hilang)
   mainContent.classList.remove('hidden');
+  // Paksa scroll ke top sebelum konten dirender
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       mainContent.classList.add('visible');
     });
   });
 
-  // 3. Attempt autoplay music
+  // 3. Music
   playMusic();
 
-  // 4. Start auto-scroll setelah animasi cover selesai & konten terlihat
-  setTimeout(startAutoScroll, 1600);
+  // 4. Setelah animasi cover selesai, hapus cover & mulai scroll
+  setTimeout(() => {
+    cover.style.display = 'none';
+    // Pastikan di atas
+    window.scrollTo(0, 0);
+    // Mulai auto scroll
+    setTimeout(startAutoScroll, 200);
+  }, 1000);
 });
 
 
@@ -149,55 +162,50 @@ bgMusic.addEventListener('pause', () => { musicPlaying = false; updateMusicIcon(
 
 /* ============================================================
    6. AUTO SCROLL
-   - Scroll otomatis menelusuri seluruh halaman
-   - Berhenti hanya jika user scroll/swipe SENDIRI setelah scroll dimulai
+   Menggunakan setInterval agar konsisten di semua browser mobile
 ============================================================ */
-let autoScrollActive = false;
-let autoScrollRAF    = null;
+let autoScrollInterval = null;
+let autoScrollActive   = false;
 let stopListenersAdded = false;
 
 function startAutoScroll() {
+  if (autoScrollActive) return;
+
+  // Pastikan di posisi atas
   window.scrollTo(0, 0);
   autoScrollActive = true;
 
-  const PX_PER_SEC = 55;
-  let lastTime = null;
-
-  function tick(ts) {
-    if (!autoScrollActive) return;
-    if (lastTime === null) { lastTime = ts; }
-    const delta = ts - lastTime;
-    lastTime = ts;
-
+  // Gunakan setInterval (lebih stabil di mobile vs rAF)
+  // ~2px setiap 30ms ≈ 66px/detik
+  autoScrollInterval = setInterval(function() {
+    if (!autoScrollActive) {
+      clearInterval(autoScrollInterval);
+      return;
+    }
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    if (window.scrollY >= maxScroll) {
+    if (window.scrollY >= maxScroll - 2) {
+      clearInterval(autoScrollInterval);
       autoScrollActive = false;
       return;
     }
+    window.scrollBy({ top: 2, behavior: 'instant' });
+  }, 30);
 
-    window.scrollBy(0, (PX_PER_SEC * delta) / 1000);
-    autoScrollRAF = requestAnimationFrame(tick);
-  }
-
-  autoScrollRAF = requestAnimationFrame(tick);
-
-  // Pasang listener SETELAH scroll benar-benar berjalan
-  // Delay 600ms agar sentuhan pada tombol "Buka Undangan" tidak ikut mentrigger stop
-  setTimeout(addStopListeners, 600);
+  // Pasang stop listeners SETELAH 800ms
+  // supaya sentuhan tombol "Buka Undangan" tidak ikut stop scroll
+  setTimeout(addStopListeners, 800);
 }
 
 function stopAutoScroll() {
   if (autoScrollActive) {
     autoScrollActive = false;
-    if (autoScrollRAF) cancelAnimationFrame(autoScrollRAF);
+    clearInterval(autoScrollInterval);
   }
 }
 
 function addStopListeners() {
   if (stopListenersAdded) return;
   stopListenersAdded = true;
-
-  // Deteksi scroll manual user (wheel = desktop, touchmove = HP)
   window.addEventListener('wheel',     stopAutoScroll, { passive: true });
   window.addEventListener('touchmove', stopAutoScroll, { passive: true });
   window.addEventListener('keydown', function(e) {
@@ -453,11 +461,10 @@ loadWishes();
 
 
 /* ============================================================
-   12. PREVENT DOUBLE-TAP ZOOM ON BUTTONS (iOS / Android)
+   12. PREVENT DOUBLE-TAP ZOOM (hanya via CSS touch-action)
+   — Tidak pakai touchend preventDefault karena bisa mengganggu
+     event click & auto-scroll di HP
 ============================================================ */
-document.querySelectorAll('button, a').forEach(el => {
-  el.addEventListener('touchend', function(e) { e.preventDefault(); this.click(); }, { passive: false });
-});
 
 
 /* ============================================================
