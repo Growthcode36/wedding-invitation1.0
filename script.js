@@ -97,8 +97,8 @@ btnOpen.addEventListener('click', function openCover() {
   // 3. Attempt autoplay music
   playMusic();
 
-  // 4. Start auto-scroll
-  setTimeout(startAutoScroll, 1400);
+  // 4. Start auto-scroll setelah animasi cover selesai & konten terlihat
+  setTimeout(startAutoScroll, 1600);
 });
 
 
@@ -149,28 +149,58 @@ bgMusic.addEventListener('pause', () => { musicPlaying = false; updateMusicIcon(
 
 /* ============================================================
    6. AUTO SCROLL
+   - Scroll otomatis menelusuri seluruh halaman dari atas
+   - Berhenti saat user menyentuh layar / scroll manual
 ============================================================ */
-function startAutoScroll() {
-  const hero = document.getElementById('sHero');
-  if (!hero) return;
-  // Gentle scroll down to reveal hero, then stop
-  const target = hero.offsetTop + window.innerHeight * 0.4;
-  const start  = window.scrollY;
-  const diff   = target - start;
-  const duration = 2000;
-  let startTime = null;
+let autoScrollActive = false;
+let autoScrollRAF    = null;
 
-  function step(ts) {
-    if (!startTime) startTime = ts;
-    const elapsed = ts - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    // Ease out cubic
-    const ease = 1 - Math.pow(1 - progress, 3);
-    window.scrollTo(0, start + diff * ease);
-    if (progress < 1) requestAnimationFrame(step);
+function startAutoScroll() {
+  // Pastikan halaman di posisi paling atas dulu
+  window.scrollTo(0, 0);
+
+  autoScrollActive = true;
+
+  // Kecepatan piksel per detik (makin besar makin cepat)
+  const PX_PER_SEC = 60;
+  let lastTime = null;
+
+  function tick(ts) {
+    if (!autoScrollActive) return;
+
+    if (lastTime === null) { lastTime = ts; }
+    const delta = ts - lastTime;
+    lastTime = ts;
+
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+    // Sudah di bawah? berhenti
+    if (window.scrollY >= maxScroll) {
+      autoScrollActive = false;
+      return;
+    }
+
+    window.scrollBy(0, (PX_PER_SEC * delta) / 1000);
+    autoScrollRAF = requestAnimationFrame(tick);
   }
-  requestAnimationFrame(step);
+
+  autoScrollRAF = requestAnimationFrame(tick);
 }
+
+// Hentikan auto scroll saat user scroll / touch manual
+function stopAutoScroll() {
+  if (autoScrollActive) {
+    autoScrollActive = false;
+    if (autoScrollRAF) cancelAnimationFrame(autoScrollRAF);
+  }
+}
+
+window.addEventListener('wheel',      stopAutoScroll, { passive: true });
+window.addEventListener('touchstart', stopAutoScroll, { passive: true });
+window.addEventListener('keydown',    function(e) {
+  const scrollKeys = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
+  if (scrollKeys.includes(e.key)) stopAutoScroll();
+});
 
 
 /* ============================================================
