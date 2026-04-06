@@ -447,7 +447,7 @@ button, a {
 }
 
 .hero-tagline {
-  font-size: clamp(12px, 2.5vw, 15px);
+  font-size: clamp(14px, 2.5vw, 16px);
   color: var(--text-muted);
   font-style: italic;
   max-width: 360px;
