@@ -110,7 +110,7 @@ btnOpen.addEventListener('click', function openCover() {
     // Pastikan di atas
     window.scrollTo(0, 0);
     // Mulai auto scroll
-    setTimeout(startAutoScroll, 200);
+    setTimeout(startAutoScroll, 100);
   }, 1000);
 });
 
