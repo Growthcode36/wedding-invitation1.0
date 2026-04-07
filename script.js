@@ -111,7 +111,7 @@ btnOpen.addEventListener('click', function openCover() {
     window.scrollTo(0, 0);
     // Mulai auto scroll
     setTimeout(startAutoScroll, 80);
-  }, 500);
+  }, 100);
 });
 
 
