@@ -373,9 +373,7 @@ button, a {
     linear-gradient(180deg, #050912 0%, #080f1f 50%, #0a1228 100%);
   padding-top: 0;
 }
-.hero .section-inner {
-  padding: 20px 24px 60px;
-}
+.hero .section-inner {padding: 0px 24px 60px;}
 
 .hero-bg-art {
   position: absolute;
